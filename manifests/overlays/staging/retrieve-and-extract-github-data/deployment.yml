@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghtorrent-api-deployment
+  labels:
+    app: ghtorrent-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghtorrent-api
+  template:
+    metadata:
+      labels:
+        app: ghtorrent-api
+    spec:
+      imagePullSecrets:
+        - name: harbor-secret
+      containers:
+        - name: ghtorrent-api-container
+          image: busybox # {"$imagepolicy": "staging:ghtorrent-api-policy"}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4567

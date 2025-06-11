@@ -1,0 +1,16 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: model-training-repo
+spec:
+  image: harbor.th1enlm02.live/staging/CI-build-failure-prediction-models
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: model-training-img
+spec:
+  update:
+    path: ./manifests/overlays/staging/CI-build-failure-prediction-models
+    strategy: Setters

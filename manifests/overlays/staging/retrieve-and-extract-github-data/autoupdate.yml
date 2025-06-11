@@ -1,0 +1,16 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: ghtorrent-api-repo
+spec:
+  image: harbor.th1enlm02.live/staging/retrieve-and-extract-github-data
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: ghtorrent-api-img
+spec:
+  update:
+    path: ./manifests/overlays/staging/retrieve-and-extract-github-data
+    strategy: Setters

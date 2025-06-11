@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ciflow-deployment
+  labels:
+    app: ciflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ciflow
+  template:
+    metadata:
+      labels:
+        app: ciflow
+    spec:
+      imagePullSecrets:
+        - name: harbor-secret
+      containers:
+        - name: ciflow-container
+          image: busybox # {"$imagepolicy": "production:ciflow-policy"}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5173
+          env:
+            - name: VITE_APP_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: ciflow-config
+                  key: VITE_APP_API_URL
+            - name: VITE_GHTORRENT_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: ciflow-config
+                  key: VITE_GHTORRENT_API_URL
+            - name: VITE_PREDICT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: ciflow-config
+                  key: VITE_PREDICT_URL

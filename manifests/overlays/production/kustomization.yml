@@ -1,0 +1,6 @@
+resources:
+  - ../../base
+  - namespace.yml
+namespace: production
+patches:
+  - path: ./vault-patches.yml

@@ -1,0 +1,51 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: app-api-repo
+spec:
+  image: harbor.th1enlm02.live/production/CI-failure-prediction-app
+  interval: 20s
+  provider: generic
+  secretRef:
+    name: harbor-secret
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: app-api-policy
+spec:
+  imageRepositoryRef:
+    name: app-api-repo
+  filterTags:
+    pattern: '^[a-fA-F0-9]+-(?P<ts>.*)$'
+    extract: '$ts'
+  policy:
+    numerical:
+      order: asc
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: app-api-img
+spec:
+  interval: 30m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: fluxcdbot@users.noreply.github.com
+        name: Flux
+      messageTemplate: 'Release Production'
+    push:
+      branch: main
+  update:
+    path: ./manifests/base/CI-failure-prediction-app
+    strategy: Setters

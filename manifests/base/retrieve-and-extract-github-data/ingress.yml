@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ghtorrent-api-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ghtorrent-api.th1enlm02.live
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: ghtorrent-api-service
+              port:
+                number: 4567

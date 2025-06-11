@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-api-deployment
+  labels:
+    app: app-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-api
+  template:
+    metadata:
+      labels:
+        app: app-api
+    spec:
+      imagePullSecrets:
+        - name: harbor-secret
+      containers:
+        - name: app-api-container
+          image: busybox # {"$imagepolicy": "staging:app-api-policy"}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000

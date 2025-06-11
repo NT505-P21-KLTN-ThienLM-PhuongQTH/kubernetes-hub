@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghtorrent-api-service
+spec:
+  selector:
+    app: ghtorrent-api
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 4567
+      targetPort: 4567

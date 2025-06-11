@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ciflow-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ciflow.th1enlm02.live
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: ciflow-service
+              port:
+                number: 5173

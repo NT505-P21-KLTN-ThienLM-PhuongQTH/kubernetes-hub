@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-training-deployment
+  labels:
+    app: model-training
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: model-training
+  template:
+    metadata:
+      labels:
+        app: model-training
+    spec:
+      imagePullSecrets:
+        - name: harbor-secret
+      containers:
+        - name: model-training-container
+          image: busybox # {"$imagepolicy": "production:model-training-policy"}
+          imagePullPolicy: Always

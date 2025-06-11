@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: model-api-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: model-api.th1enlm02.live
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: model-api-service
+              port:
+                number: 4567

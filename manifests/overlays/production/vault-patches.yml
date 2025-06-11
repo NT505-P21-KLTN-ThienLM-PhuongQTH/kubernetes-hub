@@ -1,0 +1,102 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-api-deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "readonly"
+        vault.hashicorp.com/template-static-secret-render-interval: "10s"
+        vault.hashicorp.com/agent-inject-secret-app: "thesis/data/production/app"
+        vault.hashicorp.com/agent-inject-template-app: |
+          {{- with secret "thesis/data/production/app" -}}
+            {{- range $key, $value := .Data.data -}}
+              export {{ $key }}="{{ $value }}" \n
+            {{- end }}
+          {{- end }}
+    spec:
+      serviceAccountName: vault-sa
+      containers:
+        - name: app-api-container
+          command: ["/bin/sh", "-c"]
+          args: ["source /vault/secrets/app && node server.js"]
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghtorrent-api-deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "readonly"
+        vault.hashicorp.com/template-static-secret-render-interval: "10s"
+        vault.hashicorp.com/agent-inject-secret-ghtorrent: "thesis/data/production/ghtorrent"
+        vault.hashicorp.com/agent-inject-template-ghtorrent: |
+          {{- with secret "thesis/data/production/ghtorrent" -}}
+            {{- range $key, $value := .Data.data -}}
+              export {{ $key }}="{{ $value }}" \n
+            {{- end }}
+          {{- end }}
+    spec:
+      serviceAccountName: vault-sa
+      containers:
+        - name: ghtorrent-api-container
+          command: ["/bin/bash", "-c"]
+          args: ["source /vault/secrets/ghtorrent && ruby app.rb"]
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-api-deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "readonly"
+        vault.hashicorp.com/template-static-secret-render-interval: "10s"
+        vault.hashicorp.com/agent-inject-secret-model: "thesis/data/production/model"
+        vault.hashicorp.com/agent-inject-template-model: |
+          {{- with secret "thesis/data/production/model" -}}
+            {{- range $key, $value := .Data.data -}}
+              export {{ $key }}="{{ $value }}" \n
+            {{- end }}
+          {{- end }}
+    spec:
+      serviceAccountName: vault-sa
+      containers:
+        - name: model-api-container
+          command: ["/bin/bash", "-c"]
+          args: ["source /vault/secrets/model && uvicorn main:app --host 0.0.0.0 --port 8000"]
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-training-deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "readonly"
+        vault.hashicorp.com/template-static-secret-render-interval: "10s"
+        vault.hashicorp.com/agent-inject-secret-training: "thesis/data/production/training"
+        vault.hashicorp.com/agent-inject-template-training: |
+          {{- with secret "thesis/data/production/training" -}}
+            {{- range $key, $value := .Data.data -}}
+              export {{ $key }}="{{ $value }}" \n
+            {{- end }}
+          {{- end }}
+    spec:
+      serviceAccountName: vault-sa
+      containers:
+        - name: model-training-container
+          command: ["/bin/bash", "-c"]
+          args: ["source /vault/secrets/training && python consumer.py --mode consume"]
