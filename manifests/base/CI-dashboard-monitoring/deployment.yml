@@ -38,3 +38,10 @@ spec:
                 configMapKeyRef:
                   name: ciflow-configmap
                   key: VITE_PREDICT_URL
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "150Mi"
+            limits:
+              cpu: "100m"
+              memory: "300Mi"
