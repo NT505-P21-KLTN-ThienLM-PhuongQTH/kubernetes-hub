@@ -1,0 +1,15 @@
+global:
+  enabled: false
+  namespace: vault
+  externalVaultAddr: http://10.0.2.10:8200
+
+injector:
+  enabled: true
+  logLevel: "debug"
+  agentDefaults:
+    cpuLimit: "200m"
+    cpuRequest: "100m"
+    memLimit: "128Mi"
+    memRequest: "64Mi"
+  authPath: "auth/thesis-k8s"
+  logLevel: "debug"

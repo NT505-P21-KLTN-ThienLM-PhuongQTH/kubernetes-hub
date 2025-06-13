@@ -6,16 +6,16 @@ patches:
   - path: ./CI-dashboard-monitoring/ingress.yml
   - path: ./CI-dashboard-monitoring/configMap.yml
   - path: ./CI-dashboard-monitoring/deployment.yml
-  - path: ./CI-dashboard-monitoring/autoupdate.yml
+  # - path: ./CI-dashboard-monitoring/autoupdate.yml
   - path: ./CI-failure-prediction-app/ingress.yml
   - path: ./CI-failure-prediction-app/deployment.yml
-  - path: ./CI-failure-prediction-app/autoupdate.yml
+  # - path: ./CI-failure-prediction-app/autoupdate.yml
   - path: ./CI-build-failure-prediction-inference/ingress.yml
   - path: ./CI-build-failure-prediction-inference/deployment.yml
-  - path: ./CI-build-failure-prediction-inference/autoupdate.yml
+  # - path: ./CI-build-failure-prediction-inference/autoupdate.yml
   - path: ./CI-build-failure-prediction-models/deployment.yml
-  - path: ./CI-build-failure-prediction-models/autoupdate.yml
+  # - path: ./CI-build-failure-prediction-models/autoupdate.yml
   - path: ./retrieve-and-extract-github-data/ingress.yml
   - path: ./retrieve-and-extract-github-data/deployment.yml
-  - path: ./retrieve-and-extract-github-data/autoupdate.yml
+  # - path: ./retrieve-and-extract-github-data/autoupdate.yml
   - path: ./vault-patches.yml
