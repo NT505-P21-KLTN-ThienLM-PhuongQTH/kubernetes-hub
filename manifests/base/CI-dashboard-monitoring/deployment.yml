@@ -26,15 +26,15 @@ spec:
             - name: VITE_APP_API_URL
               valueFrom:
                 configMapKeyRef:
-                  name: ciflow-config
+                  name: ciflow-configmap
                   key: VITE_APP_API_URL
             - name: VITE_GHTORRENT_API_URL
               valueFrom:
                 configMapKeyRef:
-                  name: ciflow-config
+                  name: ciflow-configmap
                   key: VITE_GHTORRENT_API_URL
             - name: VITE_PREDICT_URL
               valueFrom:
                 configMapKeyRef:
-                  name: ciflow-config
+                  name: ciflow-configmap
                   key: VITE_PREDICT_URL
