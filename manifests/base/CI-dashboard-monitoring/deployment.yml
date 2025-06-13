@@ -18,7 +18,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: ciflow-container
-          image: busybox # {"$imagepolicy": "production:ciflow-policy"}
+          image: harbor.th1enlm02.live/production/ci-dashboard-monitoring:ec925b6-1749837089 # {"$imagepolicy": "production:ciflow-policy"}
           imagePullPolicy: Always
           ports:
             - containerPort: 5173
