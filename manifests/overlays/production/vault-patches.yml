@@ -9,8 +9,8 @@ spec:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "readonly"
         vault.hashicorp.com/template-static-secret-render-interval: "10s"
-        vault.hashicorp.com/agent-inject-secret-app: "thesis/data/production/app-api"
-        vault.hashicorp.com/agent-inject-template-app: |
+        vault.hashicorp.com/agent-inject-secret-app-api: "thesis/data/production/app-api"
+        vault.hashicorp.com/agent-inject-template-app-api: |
           {{- with secret "thesis/data/production/app-api" -}}
             {{- range $key, $value := .Data.data -}}
               export {{ $key }}="{{ $value }}" \n
@@ -35,8 +35,8 @@ spec:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "readonly"
         vault.hashicorp.com/template-static-secret-render-interval: "10s"
-        vault.hashicorp.com/agent-inject-secret-ghtorrent: "thesis/data/production/ghtorrent-api"
-        vault.hashicorp.com/agent-inject-template-ghtorrent: |
+        vault.hashicorp.com/agent-inject-secret-ghtorrent-api: "thesis/data/production/ghtorrent-api"
+        vault.hashicorp.com/agent-inject-template-ghtorrent-api: |
           {{- with secret "thesis/data/production/ghtorrent-api" -}}
             {{- range $key, $value := .Data.data -}}
               export {{ $key }}="{{ $value }}" \n
@@ -61,8 +61,8 @@ spec:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "readonly"
         vault.hashicorp.com/template-static-secret-render-interval: "10s"
-        vault.hashicorp.com/agent-inject-secret-model: "thesis/data/production/model-api"
-        vault.hashicorp.com/agent-inject-template-model: |
+        vault.hashicorp.com/agent-inject-secret-model-api: "thesis/data/production/model-api"
+        vault.hashicorp.com/agent-inject-template-model-api: |
           {{- with secret "thesis/data/production/model-api" -}}
             {{- range $key, $value := .Data.data -}}
               export {{ $key }}="{{ $value }}" \n
@@ -87,8 +87,8 @@ spec:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "readonly"
         vault.hashicorp.com/template-static-secret-render-interval: "10s"
-        vault.hashicorp.com/agent-inject-secret-training: "thesis/data/production/model-training"
-        vault.hashicorp.com/agent-inject-template-training: |
+        vault.hashicorp.com/agent-inject-secret-model-training: "thesis/data/production/model-training"
+        vault.hashicorp.com/agent-inject-template-model-training: |
           {{- with secret "thesis/data/production/model-training" -}}
             {{- range $key, $value := .Data.data -}}
               export {{ $key }}="{{ $value }}" \n
