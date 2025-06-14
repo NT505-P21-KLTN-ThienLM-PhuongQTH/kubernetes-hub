@@ -6,4 +6,4 @@ resources:
   - ingress.yml
   - deployment.yml
   # - autoupdate.yml
-  - hpa.yml
+  # - hpa.yml
