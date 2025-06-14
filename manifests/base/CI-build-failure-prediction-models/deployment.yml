@@ -18,5 +18,5 @@ spec:
         - name: harbor-secret
       containers:
         - name: model-training-container
-          image: busybox # {"$imagepolicy": "production:model-training-policy"}
+          image: harbor.th1enlm02.live/production/ci-build-failure-prediction-models:e9253a2-1749894661 # {"$imagepolicy": "production:model-training-policy"}
           imagePullPolicy: Always
