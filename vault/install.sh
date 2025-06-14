@@ -1,3 +1,3 @@
 helm repo add hashicorp https://helm.releases.hashicorp.com
 helm repo update
-helm install vault hashicorp/vault -f .\helm\vault\values.yml
+helm install vault hashicorp/vault -f .\vault\values.yml
