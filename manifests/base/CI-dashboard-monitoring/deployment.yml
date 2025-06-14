@@ -40,7 +40,7 @@ spec:
                   key: VITE_PREDICT_URL
           resources:
             requests:
-              cpu: "300m"
+              cpu: "350m"
               memory: "150Mi"
             limits:
               cpu: "400m"
