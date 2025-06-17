@@ -18,7 +18,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: ghtorrent-api-container
-          image: harbor.th1enlm02.live/production/retrieve-and-extract-github-data:79eecab-1749894287 # {"$imagepolicy": "production:ghtorrent-api-policy"}
+          image: harbor.th1enlm02.live/production/retrieve-and-extract-github-data:1828d64-1750179580 # {"$imagepolicy": "production:ghtorrent-api-policy"}
           imagePullPolicy: Always
           ports:
             - containerPort: 4567
