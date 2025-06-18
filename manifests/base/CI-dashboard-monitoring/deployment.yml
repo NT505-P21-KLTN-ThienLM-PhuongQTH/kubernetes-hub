@@ -18,7 +18,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: ciflow-container
-          image: harbor.th1enlm02.live/production/ci-dashboard-monitoring:9a305a5-1750253162 # {"$imagepolicy": "production:ciflow-policy"}
+          image: harbor.th1enlm02.live/production/ci-dashboard-monitoring:e7da458-1750266990 # {"$imagepolicy": "production:ciflow-policy"}
           imagePullPolicy: Always
           ports:
             - containerPort: 5173
