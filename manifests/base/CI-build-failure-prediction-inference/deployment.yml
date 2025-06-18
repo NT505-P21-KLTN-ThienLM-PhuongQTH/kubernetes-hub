@@ -18,7 +18,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: model-api-container
-          image: harbor.th1enlm02.live/production/ci-build-failure-prediction-inference:e627ae9-1750181390 # {"$imagepolicy": "production:model-api-policy"}
+          image: harbor.th1enlm02.live/production/ci-build-failure-prediction-inference:071eadb-1750234115 # {"$imagepolicy": "production:model-api-policy"}
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
