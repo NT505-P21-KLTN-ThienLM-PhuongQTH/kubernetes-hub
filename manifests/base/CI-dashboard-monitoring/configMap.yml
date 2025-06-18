@@ -6,4 +6,4 @@ metadata:
 data:
   VITE_APP_API_URL: "https://app-api.th1enlm02.live"
   VITE_GHTORRENT_API_URL: "https://ghtorrent-api.th1enlm02.live"
-  VITE_PREDICT_URL: "https://model-api.th1enlm02.live"
+  VITE_PREDICT_URL: "https://golden-lacewing-famous.ngrok-free.app"
