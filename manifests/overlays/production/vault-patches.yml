@@ -47,7 +47,7 @@ spec:
       containers:
         - name: ghtorrent-api-container
           command: ["/bin/bash", "-c"]
-          args: ["source /vault/secrets/ghtorrent-api && ruby app.rb"]
+          args: ["source /vault/secrets/ghtorrent-api && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
 
 ---
 apiVersion: apps/v1
