@@ -5,4 +5,4 @@ resources:
   - ingress.yml
   - hpa.yml
   - deployment.yml
-  - pvc.yml
+  # - pvc.yml

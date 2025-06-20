@@ -29,10 +29,10 @@ spec:
             limits:
               cpu: "200m"
               memory: "256Mi"
-          volumeMounts:
-            - name: ghtorrent-storage
-              mountPath: /app/repos
-      volumes:
-        - name: ghtorrent-storage
-          persistentVolumeClaim:
-            claimName: ghtorrent-api-pvc
+      #     volumeMounts:
+      #       - name: ghtorrent-storage
+      #         mountPath: /app/repos
+      # volumes:
+      #   - name: ghtorrent-storage
+      #     persistentVolumeClaim:
+      #       claimName: ghtorrent-api-pvc
