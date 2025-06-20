@@ -6,4 +6,4 @@ resources:
   - deployment.yml
   # - autoupdate.yml
   - hpa.yml
-  - pvc.yml
+  # - pvc.yml
