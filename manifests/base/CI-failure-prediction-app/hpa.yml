@@ -24,9 +24,9 @@ spec:
   #     - type: Percent
   #       value: 100
   #       periodSeconds: 15
-  # - type: Resource
-  #   resource:
-  #     name: memory
-  #     target:
-  #       type: Utilization
-  #       averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 70
