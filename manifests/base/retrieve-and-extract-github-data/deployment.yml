@@ -24,11 +24,11 @@ spec:
             - containerPort: 4567
           resources:
             requests:
-              cpu: "100m"
-              memory: "200Mi"
+              cpu: "250m"
+              memory: "300Mi"
             limits:
-              cpu: "200m"
-              memory: "400Mi"
+              cpu: "500m"
+              memory: "500Mi"
       #     volumeMounts:
       #       - name: ghtorrent-storage
       #         mountPath: /app/repos
