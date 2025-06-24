@@ -18,7 +18,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: model-training-container
-          image: harbor.th1enlm02.live/production/ci-build-failure-prediction-models:e97378d-1750699078 # {"$imagepolicy": "production:model-training-policy"}
+          image: harbor.th1enlm02.live/production/ci-build-failure-prediction-models:e97378d-1750780958 # {"$imagepolicy": "production:model-training-policy"}
           imagePullPolicy: Always
           resources:
             requests:
